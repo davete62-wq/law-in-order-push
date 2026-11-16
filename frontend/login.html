@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Login · Law in Order</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <div class="brandmark">§</div>
+      <span>LAW IN ORDER</span>
+    </a>
+    <nav class="navlinks">
+      <button id="theme-toggle" title="Toggle theme" aria-label="Toggle dark mode">🌙</button>
+      <a class="btn btn-light btn-sm" href="index.html">← Back to explore</a>
+    </nav>
+  </div>
+</header>
+
+<div class="auth-page">
+  <div class="auth-box">
+    <div class="eyebrow">KB Academy · Members only</div>
+    <h1>Welcome.</h1>
+    <p>Sign in to your Law in Order space, or register as a new member.</p>
+
+    <!-- Tab switcher -->
+    <div class="auth-tabs" style="margin-top:20px;">
+      <button class="auth-tab active" id="tab-login" onclick="showTab('login')">Sign In</button>
+      <button class="auth-tab" id="tab-register" onclick="showTab('register')">Register</button>
+    </div>
+
+    <!-- ── LOGIN FORM ─────────────────────────────────────── -->
+    <form id="login-form">
+      <div class="field">
+        <label for="login-username">Username</label>
+        <input id="login-username" autocomplete="username" required placeholder="Your username">
+      </div>
+      <div class="field">
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" autocomplete="current-password" required placeholder="Your password">
+      </div>
+      <div id="login-error" class="error"></div>
+      <button class="btn btn-gold btn-full" type="submit" style="margin-top:8px;">Enter dashboard ↗</button>
+      <p class="hint">Having trouble? Contact the club president or vice president on Instagram.</p>
+    </form>
+
+    <!-- ── REGISTER FORM ──────────────────────────────────── -->
+    <form id="register-form" class="hidden">
+      <div class="two">
+        <div class="field">
+          <label for="reg-first">First name</label>
+          <input id="reg-first" required placeholder="First name">
+        </div>
+        <div class="field">
+          <label for="reg-last">Last name</label>
+          <input id="reg-last" required placeholder="Last name">
+        </div>
+      </div>
+      <div class="field">
+        <label for="reg-username">Choose a username</label>
+        <input id="reg-username" required placeholder="e.g. sara_k" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="reg-grade">Grade</label>
+        <select id="reg-grade" required>
+          <option value="">Select your grade</option>
+          <option value="9">Grade 9</option>
+          <option value="10">Grade 10</option>
+          <option value="11">Grade 11</option>
+          <option value="12">Grade 12</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="reg-password">Create a password</label>
+        <input id="reg-password" type="password" required placeholder="At least 6 characters" autocomplete="new-password">
+      </div>
+      <div class="field">
+        <label for="reg-code">Club access code</label>
+        <input id="reg-code" type="password" required placeholder="Enter the code given to you">
+      </div>
+      <div id="register-error" class="error"></div>
+      <div id="register-success" class="success"></div>
+      <button class="btn btn-gold btn-full" type="submit" style="margin-top:8px;">Create account ↗</button>
+      <p class="hint">No email, Gmail or phone number required. The access code is provided by club leadership.</p>
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/theme.js"></script>
+<script>
+  function showTab(tab) {
+    document.getElementById("tab-login").classList.toggle("active", tab === "login");
+    document.getElementById("tab-register").classList.toggle("active", tab === "register");
+    document.getElementById("login-form").classList.toggle("hidden", tab !== "login");
+    document.getElementById("register-form").classList.toggle("hidden", tab !== "register");
+  }
+
+  // ── LOGIN ──────────────────────────────────────────────────────
+  document.getElementById("login-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    const errEl = document.getElementById("login-error");
+    errEl.textContent = "";
+    try {
+      await api.post("/auth/login", {
+        username: document.getElementById("login-username").value.trim(),
+        password: document.getElementById("login-password").value,
+      });
+      // Redirect to dashboard
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      errEl.textContent = err.message;
+    }
+  });
+
+  // ── REGISTER ───────────────────────────────────────────────────
+  document.getElementById("register-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    const errEl  = document.getElementById("register-error");
+    const succEl = document.getElementById("register-success");
+    errEl.textContent  = "";
+    succEl.textContent = "";
+    try {
+      const res = await api.post("/auth/register", {
+        username:    document.getElementById("reg-username").value.trim(),
+        first_name:  document.getElementById("reg-first").value.trim(),
+        last_name:   document.getElementById("reg-last").value.trim(),
+        grade:       parseInt(document.getElementById("reg-grade").value),
+        password:    document.getElementById("reg-password").value,
+        access_code: document.getElementById("reg-code").value.trim(),
+      });
+      succEl.textContent = `Account created! Your member number is ${res.member_number}. Redirecting…`;
+      setTimeout(() => window.location.href = "dashboard.html", 1800);
+    } catch (err) {
+      errEl.textContent = err.message;
+    }
+  });
+
+  // Check if already logged in → redirect
+  api.get("/auth/me").then(() => {
+    window.location.href = "dashboard.html";
+  }).catch(() => {});
+</script>
+</body>
+</html>

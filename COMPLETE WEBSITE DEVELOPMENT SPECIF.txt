@@ -1,0 +1,721 @@
+COMPLETE WEBSITE DEVELOPMENT SPECIFICATION
+LAW IN ORDER — KB ACADEMY
+Build a complete, functional, professional website for Law in Order, a student-led law, justice, critical-thinking, analysis, debate, and decision-making club at KB Academy.
+This must be a real working website, not just a visual mockup or a collection of buttons that do nothing. All features must be connected to a functional backend and database. Do not leave fake buttons, nonfunctional pages, placeholder dashboards, or features that only look like they work.
+The website should have two main areas:
+Public Website / Explore — accessible to visitors and prospective members.
+Private Member Portal — accessible to registered users according to their assigned roles and permissions.
+The website must work across devices, including laptops, desktop computers, tablets, and mobile phones.
+1. CLUB IDENTITY AND BRANDING
+Club name: Law in Order
+School: KB Academy
+Main motto:
+“Think Critically. Speak Fearlessly. Seek Justice.”
+An earlier alternative motto was:
+“Beyond the Law. Toward Justice.”
+Use the main motto unless the club's settings allow it to be changed.
+The club focuses on:
+Law and justice.
+Critical thinking.
+Decision-making.
+Analytical thinking.
+Debate and discussion.
+Understanding legal cases.
+Mock trials.
+Legal reasoning.
+Public speaking.
+Teamwork and leadership.
+Understanding the justice system.
+The website should communicate intelligence, professionalism, confidence, elegance, and a genuine passion for law.
+The About Us section should sound like it was written by a passionate student who genuinely cares about the club. Avoid generic corporate language or robotic AI-sounding descriptions.
+Logo
+Create an original, elegant, minimalistic logo inspired by the Scales of Justice.
+Requirements:
+Thin, clean, recognizable lines.
+Professional appearance.
+Gold and/or white versions.
+Suitable for light and dark backgrounds.
+Not overly decorated.
+No unnecessary leaves, crowded symbols, or excessive details.
+It should look like a real club identity, not a random icon.
+Use the logo consistently throughout the public website and member portal.
+Color palette and themes
+The visual identity should support a range of sophisticated colors:
+Ivory.
+Cream.
+Champagne.
+Beige.
+Brown.
+Gold.
+Navy blue.
+Black.
+White.
+Burgundy.
+The original design preference included navy blue and gold. The later design direction emphasized ivory, cream, champagne, beige, brown, and gold. Keep the overall appearance elegant and cohesive rather than forcing every color into every page.
+Include:
+Light mode.
+Dark mode.
+A theme toggle.
+Consistent colors throughout Explore, login, registration, and every dashboard.
+Theme preferences remembered across sessions and devices.
+Do not make the design overly colorful, childish, crowded, or pink-focused.
+Typography and design
+Use elegant, readable typography. A combination of a refined serif font for headings and a clean sans-serif font for body text is appropriate.
+The website should have:
+Clean spacing.
+Clear navigation.
+Professional buttons.
+Consistent cards and sections.
+Subtle animations.
+Smooth transitions.
+Responsive layouts.
+Good contrast.
+Accessible text sizes.
+A polished, modern appearance.
+2. PUBLIC WEBSITE — EXPLORE
+The public website must be accessible without signing in.
+The navigation should include:
+Home.
+About Us.
+Mission.
+Activities.
+Events and Announcements.
+Contact.
+Member Login.
+Include a clear login or application call-to-action.
+Home page
+The homepage should contain:
+Law in Order logo.
+Club name.
+Main motto.
+KB Academy branding.
+A professional hero section.
+A short introduction to the club.
+A changing or rotating image section.
+Relevant legal imagery.
+Upcoming events.
+Public announcements.
+A monthly mock-trial feature or countdown.
+A clear button to log in or apply.
+Use appropriate imagery, such as:
+Courthouses.
+Courtrooms.
+Scales of Justice.
+Law books.
+Legal proceedings.
+Debate and public speaking.
+Use suitable, high-quality imagery rather than random unrelated photographs.
+About Us
+Explain what Law in Order is, what it does, why it exists, and what students gain by joining.
+The writing should feel genuine and student-led.
+Mission and vision
+Include editable mission and vision sections.
+Club leaders should be able to update the text without editing the source code.
+Activities
+Show the club's activities, including:
+Legal discussions.
+Case analysis.
+Debate.
+Critical-thinking activities.
+Decision-making exercises.
+Mock trials.
+Team activities.
+Other club activities added by authorized leaders.
+Events and announcements
+Visitors should be able to see public announcements and relevant upcoming events.
+Authorized leaders should be able to create, edit, publish, and remove announcements and events.
+Private member-only information must not accidentally appear publicly.
+Contact
+Include club contact information.
+Allow the President and Vice President's Instagram usernames or handles to be edited through the website settings.
+Do not hardcode personal contact details permanently.
+An optional contact form can be included if implemented properly.
+3. USER ROLES AND PERMISSIONS
+The website needs role-based access control.
+The roles discussed across the project have evolved. The original design had three main roles: President, Staff Member, and Delegate. Later requirements added Vice President and Applicant.
+The complete current role structure should therefore support:
+President.
+Vice President.
+Staff Member.
+Applicant.
+Delegate.
+President
+The President is a club leader.
+The President should have access to the main administrative features, including:
+Managing members.
+Managing applications.
+Reviewing essays.
+Approving or rejecting applications.
+Managing Staff Members.
+Assigning Staff permissions.
+Creating and managing assignments.
+Managing events.
+Managing announcements.
+Managing teams.
+Managing mock trials.
+Managing case files.
+Managing group chats.
+Managing rankings and points.
+Managing certificates.
+Updating club information.
+Managing access codes.
+Managing settings.
+Suspending, restoring, and removing members.
+Managing the club's resources.
+Vice President
+The President and Vice President must have equal authority and identical responsibilities.
+Neither is subordinate to the other.
+Both should have the same administrative powers and access to the same leadership functions.
+Do not make the Vice President a lower-level assistant.
+Staff Member
+There should be a maximum of five Staff Members.
+Staff permissions must be individually configurable.
+The President and Vice President should be able to assign or remove specific permissions for each Staff Member.
+Examples of possible permissions:
+Reviewing applications.
+Reviewing submitted essays.
+Managing assignments.
+Managing events.
+Managing announcements.
+Managing case files.
+Managing group chats.
+Managing participation.
+Managing points and rankings.
+Managing other delegated responsibilities.
+Do not give every Staff Member unrestricted administrative access automatically.
+Use a proper permission system rather than merely hiding buttons.
+Applicant
+An Applicant is a student who has registered and is waiting for the essay/application review process.
+Applicants must have an appropriate dashboard.
+They should be able to:
+See their application status.
+See relevant application instructions.
+Submit their required essay.
+See whether the final result is PASS or FAIL.
+Applicants must not automatically receive access to private Delegate resources.
+Delegate
+A Delegate is a student whose application has been accepted.
+Delegates should have access to their private member dashboard and authorized club resources.
+They should be able to:
+View announcements.
+View events.
+Participate in mock trials.
+Access assigned tasks.
+Access permitted case files.
+Participate in group chats.
+View their own participation information.
+View their own points and rankings.
+View their own certificates.
+Read club rules and constitution.
+Change their appearance preferences.
+Delegates must not have access to another member's private information, passwords, essays, or personal records.
+4. REGISTRATION, LOGIN, AND ACCOUNT MANAGEMENT
+Students must be able to register independently.
+The President or Vice President must not have to log in first for students to register.
+Registration and login must work independently across different devices.
+A student should be able to create an account from home and log in later from another device.
+Registration fields
+The registration process should collect:
+First name.
+Last name.
+Grade (9, 10, 11, or 12).
+Username.
+Password.
+Requested role.
+Appropriate shared access code.
+The earlier login design also specified first name, last name, role, shared role code, and personal password.
+The registration and authentication process must not require:
+Email.
+Gmail.
+Phone number.
+Email verification.
+Phone verification.
+Do not introduce those requirements.
+Access codes
+Use separate access codes for the relevant roles.
+The original proposed codes were:
+Delegate code: KBADELEGATES
+Leader code: KBALEADERS
+The codes must be configurable by authorized leaders.
+Leaders must be able to:
+Change access codes.
+Revoke old codes.
+Control which roles can register.
+Control recruitment availability.
+Do not permanently hardcode the codes in publicly accessible frontend files.
+Leader accounts
+Create the President and Vice President accounts through a secure initial setup process.
+Do not require the President to register first before students can register.
+There should be a secure way to initialize leadership accounts without exposing administrator credentials publicly.
+Member numbers
+Every registered member should receive a unique sequential member number.
+Examples:
+#001
+#002
+#003
+Never reuse a previously assigned member number, even if an account is deleted.
+Password privacy
+Every member's password must remain private.
+Store passwords using secure salted password hashing.
+Never store plain-text passwords.
+Leaders must not be able to view or retrieve original passwords.
+Implement a secure password-change or recovery process that does not expose existing passwords.
+5. APPLICATION AND ESSAY REVIEW SYSTEM
+The application process should work as follows:
+A student registers.
+The student becomes an Applicant.
+The Applicant sees their application dashboard.
+The essay topic is communicated individually outside the website.
+The Applicant writes their essay.
+The Applicant uploads one essay file.
+Authorized leaders review the submission.
+The Applicant receives a PASS or FAIL result.
+A PASS changes the Applicant's status to Delegate.
+A FAIL means the application is unsuccessful for that recruitment process.
+Essay submission requirements
+Accept PDF and DOCX files.
+Each Applicant submits only one essay.
+No second submission or resubmission.
+Essay topics are sent individually outside the website.
+The website does not need to distribute essay topics.
+Essays must remain private.
+Other Applicants and Delegates must not be able to view another Applicant's essay.
+Authorized reviewers must be able to open and review submissions.
+Review permissions
+The President and Vice President should be able to review applications.
+Staff Members may review applications if they have been assigned the relevant permission.
+The review interface should support:
+Viewing Applicant details.
+Opening the submitted essay.
+Recording a PASS or FAIL result.
+Keeping the result associated with the correct Applicant.
+The final decision-making authority should remain with the leadership unless the permission policy is explicitly changed.
+Recruitment capacity
+The proposed maximum is 55 active Delegates.
+However:
+Applicants must still be allowed to register.
+The application system must not stop accepting Applicants merely because 55 Delegate places are occupied.
+The capacity applies to active Delegates, not Applicants.
+The capacity should be configurable by authorized leaders.
+6. MEMBER DASHBOARDS
+Each role needs an appropriate dashboard.
+Dashboards must display the member's actual information and permissions.
+Use a personalized welcome message such as:
+"Welcome back, [First Name]!"
+Applicant dashboard
+Include:
+Personal information.
+Application status.Essay submission status.
+PASS/FAIL result.
+Relevant instructions.
+Logout.
+Do not expose private Delegate resources.
+Staff dashboard
+Include:
+Assigned responsibilities.
+Permission-controlled management tools.
+Relevant applications, tasks, events, or resources.
+Only the administrative functions authorized for that Staff Member.
+Delegate dashboard
+Include:
+Personalized welcome.
+Announcements.
+Upcoming events.
+Monthly mock trials.
+Assignments.
+Case files and permitted documents.
+General group chat.
+Authorized temporary group chats.
+Participation information.
+Points and rankings.
+Certificates.
+Club rules.
+Constitution.
+Profile information.
+Theme preferences.
+Delegates should only see their own private records.
+Leadership dashboard
+The President and Vice President should have the same administrative dashboard.
+Include:
+Member management.
+Applicant management.
+Essay review.
+Staff management.
+Permission management.
+Assignments.
+Events.
+Announcements.
+Mock-trial management.
+Teams.
+Case files.
+Chat management.
+Points.
+Rankings.
+Certificates.
+Club settings.
+Access-code settings.
+Recruitment settings.
+Member capacity settings.
+Backups and relevant administrative records.
+7. PROFILE AND MEMBER INFORMATION
+Support member profiles.
+Include relevant information such as:
+First name.
+Last name.
+Username.
+Grade.
+Role.
+Member number.
+Profile picture.
+Profile pictures were added in the later project requirements.
+Protect private information. Do not make member records publicly visible.
+Members should not be able to change their role or grant themselves permissions.
+8. MONTHLY MOCK TRIAL SYSTEM
+Mock trials are one of the central activities of Law in Order.
+The club plans to hold a mock trial at the end of every month.
+Monthly schedule
+The recurring event should take place on the last calendar day of each month.
+The first planned mock trial is:
+November 30, 2026.
+The website should calculate the next mock trial automatically.
+The countdown should display:
+Days.
+Hours.
+Minutes.
+Seconds.
+The countdown must:
+Update automatically.
+Calculate the correct last day of each month.
+Handle February correctly.
+Handle leap years correctly.
+Move to the next month's final day after the current mock trial.
+Use a configurable event time.
+If an individual mock trial is rescheduled, changing that event must not accidentally break the recurring monthly schedule.
+Mock Trial Center
+Create a dedicated section for mock trials.
+It should support:
+Upcoming mock trials.
+Mock-trial dates.
+Countdown.
+Case topics.
+Case files.
+Teams.
+Assigned roles.
+Judges.
+Instructions.
+Relevant documents.
+Results.
+Past mock trials.
+Judges
+Delegates may participate as judges in mock trials.
+The system should support assigning judges and other trial roles.
+Teams and roles
+Authorized leaders should be able to organize teams and assign participants to appropriate roles.
+End-of-year trial
+In addition to monthly mock trials, the club plans a separate end-of-year realistic courtroom-style trial.
+This must be configurable as a separate event rather than being confused with the monthly recurring mock trials.
+9. ASSIGNMENTS AND TASK MANAGEMENT
+Authorized leaders and Staff Members with permission should be able to create assignments.
+Assignment features should include:
+Assignment title.
+Description.
+Instructions.
+Deadline.
+Attached files.
+Assigned individual members.
+Assigned groups or teams.
+Submission or completion tracking.
+Status.
+Delegates should be able to see the assignments assigned to them.
+Members should not automatically see private assignments assigned to other people or groups.
+Leaders and authorized Staff should be able to monitor progress.
+10. CASE FILES AND DOCUMENT STORAGE
+Create a dedicated area for case files and club documents.
+Support private document uploads, especially PDFs.
+Organize files by:
+Mock-trial event.
+Case.
+Assignment.
+Other relevant categories.
+Authorized leaders should be able to upload, organize, update, and remove files.
+Delegates should only see files they are permitted to access.
+Protect uploaded documents from unauthorized public access.11. CHAT AND GROUP COMMUNICATION
+The website should include a member chat system.
+General chat
+There must be one permanent general group chat.
+It should not be deletable.
+It is intended for general communication among authorized club members.
+Temporary group chats
+The President and Vice President should be able to create temporary group chats.
+They should also be able to delete those temporary groups.
+The system should support appropriate group membership and permissions.
+Do not make the chat system unnecessarily complicated, but it must actually work.
+Do not allow unauthorized users to access private group conversations.
+12. POINTS, PARTICIPATION, AND RANKINGS
+Include a participation and ranking system.
+Authorized Staff Members with the correct permission, as well as the President and Vice President, should be able to manage participation points.
+Features:
+Award points.
+Update points.
+Track participation.
+Display rankings.
+Show relevant member performance information.
+Keep a record of point changes.
+Delegates should be able to view their own points and relevant rankings.
+Members must not be able to change their own scores.
+Keep an audit record of changes to points and rankings.
+13. CERTIFICATES
+Include a certificate management section.
+The system should support five certificate categories or tiers.
+The exact names and criteria of the five categories still need to be finalized.
+Requirements:
+Authorized leaders can issue certificates.
+Certificates are associated with the correct member.
+Members can view their own certificates.
+Certificates should be organized clearly.
+Unauthorized users cannot issue or alter certificates.
+Do not invent the final five category names or their criteria.
+14. CLUB RULES AND CONSTITUTION
+Create a section for the club's rules and constitution.
+The President and Vice President should be able to upload or update these documents.
+Authorized Staff Members may manage them if given the relevant permission.
+The documents should be accessible to logged-in authorized members.
+Applicants must not automatically receive access to private Delegate resources.
+Do not expose private club documents publicly.
+15. MEMBER MANAGEMENT
+The President and Vice President must be able to manage members.
+They should be able to:
+View member records.
+Search for members.
+View roles.
+View member numbers.
+Suspend accounts.
+Restore suspended accounts.
+Delete accounts.
+Manage Staff Members.
+Assign Staff responsibilities.
+Change permissions.
+Suspended members
+A suspended member must be blocked from accessing the member portal.
+Display a clear message explaining that the account is suspended.
+Suspended accounts must not be able to bypass the restriction by using another page or direct URL.
+Deleted members
+Deleting an account must not cause the member's number to be reused.
+Preserve appropriate administrative records and audit history.
+16. SETTINGS AND ADMINISTRATION
+Create a proper settings area for authorized leadership.
+Settings should include:
+Club information
+Club name.
+Motto.
+Mission.
+Vision.
+Access and registration
+Access codes.
+Recruitment status.
+Registration controls.
+Delegate capacity.
+Staff
+Staff Members.
+Individual permissions.
+Staff responsibilities.
+Events
+Mock-trial dates.
+Mock-trial times.
+Other events.
+Event rescheduling.
+Contact
+President Instagram handle.
+Vice President Instagram handle.
+Appearance
+Light mode.
+Dark mode.
+Theme preferences.
+Documents
+Case files.
+Assignment files.
+Constitution.
+Rules.
+Certificates
+Certificate categories.
+Criteria.
+Issuing certificates.
+Backups
+Database backups.
+File backups.
+Restoration procedures.
+Settings must be persistent. Changing a setting must update the actual application, not just the visual interface.
+17. FILE UPLOADS AND STORAGE
+The system must support:
+PDF essays.
+DOCX essays.
+Case files.
+Constitution documents.
+Club rules.
+Assignment attachments.
+Other authorized club documents.
+Files must be stored securely.
+Requirements:
+Validate file types.
+Validate file sizes.
+Prevent dangerous uploads.
+Keep private documents private.
+Restrict access according to roles and permissions.
+Associate files with the correct user, assignment, case, or event.
+Do not expose private file storage through publicly guessable URLs.
+Do not impose an arbitrary tiny file limit that makes ordinary club documents unusable. However, the implementation must have a sensible technical upload limit and handle storage responsibly.
+18. SECURITY — NON-NEGOTIABLE
+Security must be implemented on the backend.
+Do not rely on hiding buttons or pages in JavaScript to protect information.
+Implement real role-based access control and permission checks on the server.
+Include:
+Secure password hashing with salts.
+Secure session management.
+CSRF protection.
+XSS prevention.
+SQL injection prevention.
+Input validation.
+Rate limiting.
+Secure file-upload validation.
+Private file storage.
+HTTPS in production.
+Secure cookies.
+Access restrictions.
+Audit logs for important administrative actions.
+Database backups.
+Tested restoration procedures.
+The President, Vice President, Staff Members, Applicants, and Delegates must only be able to access the features and information authorized for their roles.
+Do not claim that a website is impossible to hack. Build sensible security protections and explain any remaining limitations honestly.
+19. TECHNICAL REQUIREMENTS
+The website should use:
+Frontend
+HTML.
+CSS.
+JavaScript.
+Backend
+Python.
+A suitable Python backend framework can be Flask or FastAPI.
+Use a persistent database.
+SQLite may be used for local development, but do not rely on browser local storage as the main database.
+A production deployment needs a shared persistent database so users on different devices can access the same accounts, applications, events, messages, and files.
+The website must not store important user records only in the browser.
+Use a clear, organized project structure.
+Keep frontend, backend, templates, static files, database logic, and configuration organized.
+Use environment variables for secrets and deployment configuration.
+Do not hardcode production secrets into the source code.
+20. DEPLOYMENT AND HOSTING
+The goal is to make the website accessible online without unnecessary costs.
+Prefer free or low-cost hosting options where practical.
+Options previously considered include:
+Replit.
+GitHub Pages.
+Netlify.
+Render.
+Supabase.
+Cloudflare Pages.
+Choose a deployment setup that actually supports the Python backend, persistent database, and required file storage.
+A static hosting service alone is not sufficient for a website that requires a functioning backend and private database.
+Check current free-tier limitations before selecting a hosting provider.
+Explain:
+How to run the website locally.
+How to configure environment variables.
+How to install dependencies.
+How to create the database.
+How to initialize leadership accounts.
+How to deploy the backend.
+How to configure the database.
+How to deploy the frontend if separate.
+How to connect the frontend and backend.
+How to configure the domain or hosting URL.
+How to maintain backups.
+The existing website address discussed in the project is:
+https://lawinorderschoolclub67.netlify.app
+Treat it as an existing project reference, not proof that all requested features are already implemented.
+21. REQUIRED PROJECT DELIVERABLES
+Provide the complete project source code.
+The deliverables must include:
+Complete frontend.
+Complete backend.
+All templates.
+All CSS.
+All JavaScript.
+Database setup and schema.
+Authentication and authorization.
+File-upload implementation.
+All required application features.
+Requirements/dependencies file.
+Environment-variable example file.
+README.
+Installation instructions.
+Local-running instructions.
+Deployment instructions.
+Database setup instructions.
+Initial leader-account setup instructions.
+Testing instructions.
+Security notes.
+Backup and restoration instructions.
+Package the project in a properly organized ZIP file.
+The ZIP should contain the actual working source code, not just screenshots, a description, or a mockup.
+Do not provide fake download links.
+Do not claim that something has been tested unless it has actually been tested.
+Do not claim that all features are complete when some are still missing.
+22. QUALITY AND TESTING REQUIREMENTS
+Before describing the website as complete, test the actual functionality.
+Test at least:
+Registration.
+Login.
+Logout.
+Role-based access.
+Access-code validation.
+Independent registration without prior leader login.
+Cross-device/shared database behavior.
+Applicant essay submission.
+One-submission restriction.
+Essay privacy.
+PASS/FAIL decisions.
+Conversion from Applicant to Delegate.
+Staff permissions.
+Equal President and Vice President authority.
+Delegate dashboard access.
+Suspended-account restrictions.
+Assignment creation and access.
+Case-file access.
+General chat.
+Temporary group chats.
+Mock-trial countdown.
+Month-end date calculations.
+Leap-year behavior.
+Event rescheduling.
+Points and rankings.
+Certificate access.
+Constitution and rules access.
+Theme persistence.
+File-upload security.
+Database persistence.
+Backup and restoration.
+Make sure buttons and links perform their intended actions.
+Make sure direct URLs cannot bypass role restrictions.
+Make sure one user's private information cannot be accessed by another unauthorized user.
+23. IMPORTANT DEVELOPMENT INSTRUCTIONS
+Do not:
+Build only a static landing page.
+Create a fake dashboard.
+Use fake authentication.
+Use frontend-only permissions.
+Store important records only in local storage.
+Make every Staff Member an administrator.
+Make the Vice President subordinate to the President.
+Require email or phone verification.
+Require the President to log in before student registration.
+Allow Applicants to access private Delegate resources.
+Allow Applicants to submit multiple essays.
+Allow members to view other people's private essays.
+Allow members to edit their own points.
+Allow members to change their own roles.
+Make the permanent general chat deletable.
+Make the monthly mock-trial recurrence fail when February or leap years occur.
+Pretend a feature is functional when it is not.
+Claim that the website is secure without implementing security controls.
+Build the system in a maintainable way. Keep the code understandable and organized because the student building this project is also learning programming and needs to understand how it works.
+If a feature cannot be completed, clearly identify it, explain why, and do not disguise it as completed.
+The final goal is a polished, professional, functional Law in Order website that the club can genuinely use, not merely a website that looks impressive in a presentation.

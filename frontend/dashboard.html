@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Dashboard · Law in Order</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══════════════════════════════════════════════════ -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <div class="brandmark">§</div>
+      <span>LAW IN ORDER</span>
+    </a>
+    <nav class="navlinks">
+      <span id="nav-username" style="font-size:12px;color:var(--muted);"></span>
+      <button id="theme-toggle" title="Toggle theme" aria-label="Toggle dark mode">🌙</button>
+      <button class="btn btn-light btn-sm" onclick="logout()">Log out</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ══ DASHBOARD ════════════════════════════════════════════════════ -->
+<div class="wrap dash">
+  <div class="dash-head">
+    <div>
+      <div class="eyebrow">Law in Order · KB Academy</div>
+      <h1 id="welcome-msg">Your dashboard</h1>
+      <p id="dash-date" style="color:var(--muted);font-size:13px;margin-top:4px;"></p>
+    </div>
+    <div class="role-pill" id="role-pill">Member</div>
+  </div>
+
+  <div class="dash-grid">
+    <!-- ══ SIDEBAR ══════════════════════════════════════════════ -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Injected dynamically based on role -->
+    </aside>
+
+    <!-- ══ CONTENT PANELS ════════════════════════════════════════ -->
+    <div id="panels">
+
+      <!-- ── OVERVIEW ──────────────────────────────────────────── -->
+      <section class="panel active" id="panel-overview">
+        <h2 class="panel-title">Your space.</h2>
+        <p class="panel-sub">Everything you need for your club activities, in one place.</p>
+        <div class="metric-grid" id="overview-metrics"></div>
+        <div class="form-card" style="margin-top:16px;">
+          <h3>Latest announcements</h3>
+          <div id="overview-announcements" class="content-list" style="margin-top:14px;"></div>
+        </div>
+        <div class="form-card" style="margin-top:16px;" id="next-trial-card">
+          <h3>⚖ Next mock trial</h3>
+          <div class="countdown-clock" style="justify-content:flex-start;gap:16px;margin-top:14px;">
+            <div class="countdown-unit"><div class="countdown-num" id="cd-days" style="font-size:36px;">--</div><div class="countdown-label">Days</div></div>
+            <div class="countdown-unit"><div class="countdown-num" id="cd-hours" style="font-size:36px;">--</div><div class="countdown-label">Hours</div></div>
+            <div class="countdown-unit"><div class="countdown-num" id="cd-minutes" style="font-size:36px;">--</div><div class="countdown-label">Minutes</div></div>
+            <div class="countdown-unit"><div class="countdown-num" id="cd-seconds" style="font-size:36px;">--</div><div class="countdown-label">Seconds</div></div>
+          </div>
+          <p id="cd-date-label" style="font-size:12px;color:var(--muted);margin-top:10px;"></p>
+        </div>
+      </section>
+
+      <!-- ── APPLICANT STATUS ──────────────────────────────────── -->
+      <section class="panel" id="panel-application">
+        <h2 class="panel-title">Your application.</h2>
+        <p class="panel-sub">Track the status of your application to Law in Order.</p>
+        <div class="form-card" id="app-status-card">
+          <div id="app-status-content"><div class="empty">Loading…</div></div>
+        </div>
+        <div class="form-card" id="essay-upload-card">
+          <h3>Submit your essay</h3>
+          <p style="font-size:13px;color:var(--muted);margin:8px 0 14px;">Upload your essay (PDF or DOCX). You may only submit once.</p>
+          <form id="essay-form">
+            <div class="field">
+              <label>Essay file (PDF or DOCX)</label>
+              <input type="file" id="essay-file" accept=".pdf,.doc,.docx" required>
+            </div>
+            <div id="essay-error" class="error"></div>
+            <div id="essay-success" class="success"></div>
+            <button class="btn btn-gold btn-sm" type="submit">Upload essay →</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ── ANNOUNCEMENTS ─────────────────────────────────────── -->
+      <section class="panel" id="panel-announcements">
+        <h2 class="panel-title">Announcements.</h2>
+        <p class="panel-sub">News and updates from club leadership.</p>
+        <!-- Manage form (leaders/authorized staff only) -->
+        <div id="manage-announcements-form" class="form-card hidden">
+          <h3>Post an announcement</h3>
+          <form id="ann-form">
+            <div class="field"><label>Title</label><input id="ann-title" required placeholder="Announcement title"></div>
+            <div class="field"><label>Body</label><textarea id="ann-body" required placeholder="Write your announcement here…"></textarea></div>
+            <div style="display:flex;gap:16px;align-items:center;margin:12px 0;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;"><input type="checkbox" id="ann-public"> Make public (visible on the website)</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;"><input type="checkbox" id="ann-pinned"> Pin to top</label>
+            </div>
+            <div id="ann-error" class="error"></div>
+            <button class="btn btn-gold btn-sm" type="submit">Publish →</button>
+          </form>
+        </div>
+        <div id="announcements-list" class="content-list" style="margin-top:16px;"></div>
+      </section>
+
+      <!-- ── EVENTS ────────────────────────────────────────────── -->
+      <section class="panel" id="panel-events">
+        <h2 class="panel-title">Events & meetings.</h2>
+        <p class="panel-sub">Upcoming club activities and meetings.</p>
+        <div id="manage-events-form" class="form-card hidden">
+          <h3>Create an event</h3>
+          <form id="event-form">
+            <div class="field"><label>Title</label><input id="ev-title" required placeholder="e.g. Weekly debate session"></div>
+            <div class="two">
+              <div class="field"><label>Date</label><input id="ev-date" type="date" required></div>
+              <div class="field"><label>Time</label><input id="ev-time" type="time"></div>
+            </div>
+            <div class="field"><label>Location</label><input id="ev-location" placeholder="Room / venue"></div>
+            <div class="field"><label>Details</label><textarea id="ev-desc" placeholder="What should members know?"></textarea></div>
+            <label style="display:flex;align-items:center;gap:6px;font-size:13px;margin-bottom:12px;"><input type="checkbox" id="ev-public"> Make public</label>
+            <button class="btn btn-gold btn-sm" type="submit">Publish event →</button>
+          </form>
+        </div>
+        <div id="events-list" class="content-list" style="margin-top:16px;"></div>
+      </section>
+
+      <!-- ── MOCK TRIALS ───────────────────────────────────────── -->
+      <section class="panel" id="panel-mock-trials">
+        <h2 class="panel-title">Mock trials.</h2>
+        <p class="panel-sub">The centrepiece of Law in Order — monthly courtroom simulations.</p>
+        <div id="manage-trials-form" class="form-card hidden">
+          <h3>Schedule a mock trial</h3>
+          <form id="trial-form">
+            <div class="field"><label>Title</label><input id="tr-title" required placeholder="e.g. November Mock Trial"></div>
+            <div class="two">
+              <div class="field"><label>Date</label><input id="tr-date" type="date" required></div>
+              <div class="field"><label>Time</label><input id="tr-time" type="time"></div>
+            </div>
+            <div class="field">
+              <label>Type</label>
+              <select id="tr-type">
+                <option value="monthly">Monthly</option>
+                <option value="end_of_year">End-of-year</option>
+                <option value="special">Special</option>
+              </select>
+            </div>
+            <div class="field"><label>Case topic</label><textarea id="tr-topic" placeholder="Describe the case topic…"></textarea></div>
+            <div class="field"><label>Instructions for participants</label><textarea id="tr-instructions"></textarea></div>
+            <button class="btn btn-gold btn-sm" type="submit">Schedule trial →</button>
+          </form>
+        </div>
+        <div id="trials-list" class="content-list" style="margin-top:16px;"></div>
+      </section>
+
+      <!-- ── ASSIGNMENTS ───────────────────────────────────────── -->
+      <section class="panel" id="panel-assignments">
+        <h2 class="panel-title">Assignments & Club Files.</h2>
+        <p class="panel-sub">Tasks, case briefs, rules, and files assigned to club members.</p>
+
+        <!-- Manage / Upload form (for President, VP, Staff) -->
+        <div id="manage-assignments-form" class="form-card hidden">
+          <h3>Upload assignment or club file</h3>
+          <form id="assignment-upload-form">
+            <div class="field">
+              <label>File (PDF or DOCX)</label>
+              <input type="file" id="asgn-upload-file" accept=".pdf,.doc,.docx" required>
+            </div>
+            <div class="field">
+              <label>Category</label>
+              <select id="asgn-upload-cat">
+                <option value="assignment" selected>Assignment</option>
+                <option value="rules">Club rules</option>
+                <option value="case">Case file</option>
+                <option value="constitution">Constitution</option>
+                <option value="general">General</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Title / Description</label>
+              <input id="asgn-upload-desc" placeholder="e.g. Reading material, assignment instructions, or deadline…">
+            </div>
+            <div id="asgn-upload-error" class="error"></div>
+            <button class="btn btn-gold btn-sm" type="submit">Upload & Publish →</button>
+          </form>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="filter-bar" id="asgn-filter-bar" style="display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 14px;">
+          <button type="button" class="filter-btn active" data-filter="all">All Files</button>
+          <button type="button" class="filter-btn" data-filter="assignment">Assignments</button>
+          <button type="button" class="filter-btn" data-filter="rules">Rules</button>
+          <button type="button" class="filter-btn" data-filter="case">Case Files</button>
+          <button type="button" class="filter-btn" data-filter="constitution">Constitution</button>
+          <button type="button" class="filter-btn" data-filter="general">General</button>
+        </div>
+
+        <div id="assignments-list" class="content-list"></div>
+      </section>
+
+      <!-- ── CASE FILES ────────────────────────────────────────── -->
+      <section class="panel" id="panel-files">
+        <h2 class="panel-title">Case files & documents.</h2>
+        <p class="panel-sub">Uploaded documents you have permission to access.</p>
+        <div id="manage-files-form" class="form-card hidden">
+          <h3>Upload a document</h3>
+          <form id="file-upload-form">
+            <div class="field"><label>File (PDF or DOCX)</label><input type="file" id="upload-file" accept=".pdf,.doc,.docx" required></div>
+            <div class="field">
+              <label>Category</label>
+              <select id="upload-cat">
+                <option value="case">Case file</option>
+                <option value="assignment">Assignment attachment</option>
+                <option value="constitution">Constitution</option>
+                <option value="rules">Club rules</option>
+                <option value="general">General</option>
+              </select>
+            </div>
+            <div class="field"><label>Description</label><input id="upload-desc" placeholder="Brief description…"></div>
+            <div id="upload-error" class="error"></div>
+            <button class="btn btn-gold btn-sm" type="submit">Upload →</button>
+          </form>
+        </div>
+        <div id="files-list" class="content-list" style="margin-top:16px;"></div>
+      </section>
+
+      <!-- ── CHAT ──────────────────────────────────────────────── -->
+      <section class="panel" id="panel-chat">
+        <h2 class="panel-title">Group chats.</h2>
+        <p class="panel-sub">Discuss club work with your groups.</p>
+        <div class="two" style="align-items:start;gap:20px;">
+          <div>
+            <h3 style="font-size:16px;margin-bottom:12px;">Your rooms</h3>
+            <div id="room-list" class="content-list"></div>
+            <div id="manage-room-form" class="form-card hidden" style="margin-top:16px;">
+              <h3>Create a group chat</h3>
+              <form id="room-form">
+                <div class="field"><label>Room name</label><input id="room-name" required placeholder="e.g. Prosecution Team"></div>
+                <label style="display:flex;align-items:center;gap:6px;font-size:12px;margin:8px 0 12px;color:var(--muted);cursor:pointer;">
+                  <input type="checkbox" id="room-all-delegates" checked> Add all active delegates to this chat
+                </label>
+                <button class="btn btn-gold btn-sm" type="submit">Create →</button>
+              </form>
+            </div>
+          </div>
+          <div id="chat-view" class="hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <h3 id="chat-room-title" style="font-size:16px;margin:0;"></h3>
+              <span id="chat-room-badge" class="tag"></span>
+            </div>
+            <div class="chat-box">
+              <div class="chat-messages" id="chat-messages"></div>
+              <div class="chat-input">
+                <input id="chat-input" placeholder="Write a message…">
+                <button class="btn btn-gold btn-sm" onclick="sendMsg()">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── RANKINGS ──────────────────────────────────────────── -->
+      <section class="panel" id="panel-rankings">
+        <h2 class="panel-title">Rankings & points.</h2>
+        <p class="panel-sub">Participation points earned by delegates.</p>
+        <div class="form-card" id="my-points-card">
+          <h3>My points</h3>
+          <p id="my-points-val" style="font-family:var(--font-serif);font-size:36px;color:var(--brown);margin-top:8px;">—</p>
+        </div>
+        <div id="manage-points-form" class="form-card hidden">
+          <h3>Award / deduct points</h3>
+          <form id="points-form">
+            <div class="field"><label>Member ID</label><input id="pts-uid" type="number" required placeholder="User ID"></div>
+            <div class="field"><label>Points (negative to deduct)</label><input id="pts-delta" type="number" required placeholder="e.g. 10 or -5"></div>
+            <div class="field"><label>Reason</label><input id="pts-reason" placeholder="e.g. Participated in mock trial"></div>
+            <button class="btn btn-gold btn-sm" type="submit">Apply →</button>
+          </form>
+        </div>
+        <div class="table-wrap" style="margin-top:16px;">
+          <table id="rankings-table">
+            <thead><tr><th>Rank</th><th>Name</th><th>Member #</th><th>Points</th></tr></thead>
+            <tbody id="rankings-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── CERTIFICATES ──────────────────────────────────────── -->
+      <section class="panel" id="panel-certificates">
+        <h2 class="panel-title">Certificates.</h2>
+        <p class="panel-sub">Achievements and recognition earned during your membership.</p>
+        <div id="manage-cert-form" class="form-card hidden">
+          <h3>Issue a certificate</h3>
+          <form id="cert-form">
+            <div class="field"><label>Member ID</label><input id="cert-uid" type="number" required></div>
+            <div class="field"><label>Category / tier</label><input id="cert-cat" required placeholder="e.g. Tier 1 — Active Participation"></div>
+            <div class="field"><label>Certificate title</label><input id="cert-title" placeholder="e.g. Excellence in Mock Trial"></div>
+            <div class="field"><label>Notes</label><textarea id="cert-notes" placeholder="Optional notes…"></textarea></div>
+            <button class="btn btn-gold btn-sm" type="submit">Issue →</button>
+          </form>
+        </div>
+        <div id="certs-list" class="content-list" style="margin-top:16px;"></div>
+      </section>
+
+      <!-- ── MEMBER MANAGEMENT (leaders only) ─────────────────── -->
+      <section class="panel" id="panel-members">
+        <h2 class="panel-title">Member management.</h2>
+        <p class="panel-sub">View, search and manage all club members.</p>
+        <div class="field" style="max-width:320px;">
+          <label>Search members</label>
+          <input id="member-search" placeholder="Name or username…" oninput="filterMembers()">
+        </div>
+        <div class="table-wrap" style="margin-top:16px;">
+          <table>
+            <thead><tr><th>#</th><th>Name</th><th>Username</th><th>Grade</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="members-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── APPLICANT REVIEW (leaders + authorized staff) ─────── -->
+      <section class="panel" id="panel-applications">
+        <h2 class="panel-title">Application review.</h2>
+        <p class="panel-sub">Review submitted essays and issue PASS / FAIL decisions.</p>
+        <div id="applications-list" class="content-list"></div>
+      </section>
+
+      <!-- ── SETTINGS (leaders only) ──────────────────────────── -->
+      <section class="panel" id="panel-settings">
+        <h2 class="panel-title">Club settings.</h2>
+        <p class="panel-sub">Manage club information, access codes, and recruitment.</p>
+
+        <div class="form-card">
+          <h3>Club information</h3>
+          <form id="settings-form">
+            <div class="field"><label>Club name</label><input id="set-name" placeholder="Law in Order"></div>
+            <div class="field"><label>Motto</label><input id="set-motto" placeholder="Think Critically…"></div>
+            <div class="field"><label>Mission</label><textarea id="set-mission"></textarea></div>
+            <div class="field"><label>Vision</label><textarea id="set-vision"></textarea></div>
+            <div class="two">
+              <div class="field"><label>President Instagram</label><input id="set-pres-ig" placeholder="@handle"></div>
+              <div class="field"><label>VP Instagram</label><input id="set-vp-ig" placeholder="@handle"></div>
+            </div>
+            <div class="two">
+              <div class="field">
+                <label>Delegate capacity</label>
+                <input id="set-capacity" type="number" placeholder="55">
+              </div>
+              <div class="field">
+                <label>Mock trial time</label>
+                <input id="set-trial-time" type="time">
+              </div>
+            </div>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin:12px 0;">
+              <input type="checkbox" id="set-recruitment"> Recruitment open
+            </label>
+            <button class="btn btn-gold btn-sm" type="submit">Save settings →</button>
+          </form>
+        </div>
+
+        <div class="form-card">
+          <h3>Change access codes</h3>
+          <form id="code-form">
+            <div class="two">
+              <div class="field"><label>Delegate code</label><input id="code-delegate" placeholder="New delegate code"></div>
+              <div class="field"><label>Leader code</label><input id="code-leader" placeholder="New leader code"></div>
+            </div>
+            <div id="code-error" class="error"></div>
+            <button class="btn btn-gold btn-sm" type="submit">Update codes →</button>
+          </form>
+        </div>
+      </section>
+
+    </div><!-- /panels -->
+  </div><!-- /dash-grid -->
+</div><!-- /dash -->
+
+<!-- ── Toast notification ────────────────────────────────── -->
+<div id="toast" class="hidden"></div>
+
+<!-- ══ SCRIPTS ══════════════════════════════════════════════════════ -->
+<script src="js/api.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/countdown.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
