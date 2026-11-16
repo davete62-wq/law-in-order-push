@@ -5,7 +5,15 @@ Registers all routers and configures middleware.
 """
 
 import os
+import sys
 from pathlib import Path
+
+# Ensure backend directory is on sys.path for direct imports (routes, auth, database, limiter)
+# when running from the repository root (e.g., Render startCommand: uvicorn backend.main:app)
+backend_dir = Path(__file__).resolve().parent
+if str(backend_dir) not in sys.path:
+    sys.path.insert(0, str(backend_dir))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles

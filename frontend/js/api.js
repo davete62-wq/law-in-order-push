@@ -6,7 +6,9 @@ const API_BASE = (
   window.location.protocol === "file:"
 )
   ? "http://localhost:8000/api"
-  : "https://YOUR-APP.onrender.com/api";
+  : (window.location.hostname.endsWith("onrender.com")
+      ? "/api"
+      : "https://YOUR-APP.onrender.com/api");
 
 // ── In-memory cache (key → {data, ts}) ──────────────────────────────
 const _cache = {};
