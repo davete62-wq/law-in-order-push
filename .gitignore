@@ -1,25 +1,32 @@
-# Python / virtual-env
-__pycache__/
-*.py[cod]
-venv/
+# ── Secrets & environment files ───────────────────────────────────────
 .env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
 .env.local
 .neon
 
-# Dependencies
-node_modules/
+# ── Python / virtual-env ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyc
+venv/
 
-# Uploads / media
+# ── Uploaded user files (served via Cloudinary in production) ─────────
 backend/uploads/
 frontend/uploads/
 
-# IDE / editor files
+# ── Node / package managers ───────────────────────────────────────────
+node_modules/
+
+# ── IDE / editor files ────────────────────────────────────────────────
 .idea/
 .vscode/
 *.suo
 *.user
-*.log
 
-# OS artefacts
+# ── OS artefacts ──────────────────────────────────────────────────────
+*.log
 Thumbs.db
 .DS_Store
